@@ -1,116 +1,217 @@
-
 {
-  "name": "Telegram Torrent Leecher",
-  "description": "A Telegram Torrent (and youtube-dl) Leecher based on Pyrogram. Powered by @torrentleechgdrivesupport!",
+
+  "name": "TK - TorToolKit",
+
+  "description": "A Telegram Bot that leeches magnet/torrent links/files from the interent. YT-DL supported for downloading youtube videos. Supports uploading to different cloud providers. ",
+
   "keywords": [
-    "telegram"
+
+    "telegram","bot","torrent","leech"
+
   ],
-  "repository": "https://github.com/gautamajay52/TorrentLeech-Gdrive",
-  "success_url": "https://t.me/torrentleechgdrivesupport",
-  "website": "https://github.com/gautamajay52/TorrentLeech-Gdrive",
+
+  "repository": "https://github.com/reaitten/tgtk",
+
+  "success_url": "https://github.com/reaitten/tgtk",
+
+  "website": "https://github.com/reaitten/tgtk",
+
   "env": {
-    "ENV": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode",
-      "value": "ANYTHING"
+
+    "BOT_TOKEN": {
+
+      "description": "Your bot token, as a string.",
+
+      "value": ""
+
     },
+
     "APP_ID": {
+
       "description": "Get this value from https://my.telegram.org",
+
       "value": ""
+
     },
+
     "API_HASH": {
+
       "description": "Get this value from https://my.telegram.org",
+
       "value": ""
+
     },
-    "TG_BOT_TOKEN": {
-      "description": "get this value from @BotFather",
+
+    "BASE_URL_OF_BOT": {
+
+      "description": "https://appname.herokuapp.com",
+
       "value": ""
+
     },
+
     "AUTH_CHANNEL": {
-      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
+
+      "description": "ALLOWED USERS [ids of user or supergroup] seperate by spaces",
+
       "value": ""
+
     },
-    "OWNER_ID": {
-      "description": "should be an integer. ID of owner of bot",
-      "value": ""
-    },
-    "UPLOAD_AS_DOC": {
-      "description": "True/False. If true all files will be uploaded as documents. Default is False.",
+
+    "GD_INDEX_URL": {
+
+      "description": "gdrive index link",
+
       "required": false
+
     },
-    "CHUNK_SIZE": {
-      "description": "should be an integer",
-      "value": "128",
-      "required": false
-    },
-    "ARIA_TWO_STARTED_PORT": {
-      "description": "should be an integer. The port on which aria2c daemon must start, and keep listening.",
-      "value": "6800",
-      "required": false
-    },
+
     "EDIT_SLEEP_TIME_OUT": {
-      "description": "should be an integer. Number of seconds to wait before editing a message.",
+
+      "description": "Time to wait before edit message",
+
       "value": "15",
+
       "required": false
+
     },
-    "MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START": {
-      "description": "should be an integer. Number of seconds to wait before cancelling a torrent.",
+
+    "FORCE_DOCUMENTS": {
+
+      "description": "Should force evething uploaded into Document",
+
+      "value": "False"
+
+    },
+
+    "COMPLETED_STR": {
+
+      "description": "Character to use as a completed progress",
+
       "required": false
+
     },
-    "FINISHED_PROGRESS_STR": {
-      "description": "should be a single character.",
+
+    "REMAINING_STR": {
+
+      "description": "Character to use as a incomplete progress",
+
       "required": false
+
     },
-    "UN_FINISHED_PROGRESS_STR": {
-      "description": "should be a single character.",
-      "required": false
+
+    "RCLONE_ENABLED": {
+
+      "description": "Will be enabled once its set",
+
+      "value": "False"
+
     },
-    "TG_OFFENSIVE_API": {
-      "description": "should be an URL accepting the FormParams {i}, {m}, and {t}",
-      "required": false
-    },
-    "LEECH_COMMAND": {
-      "description": "Enter your custom leech command like /leech@urgroupname and so on. Default is /leech",
-      "required": false
-    },
-    "INDEX_LINK": {
-      "description": "Enter your index link:",
-      "required": false
-    },
-    "GLEECH_COMMAND": {
-      "description": "Enter your custom gleech command like /gleech1@urgroupname and so on. Default is /gleech",
-      "required": false
-    },
-    "TELEGRAM_LEECH_COMMAND_G": {
-      "description": "Enter your custom tleech command like /tleech1@urgroupname and so on. Default is /tleech",
-      "required": false
-    },
-    "YTDL_COMMAND": {
-      "description": "Enter your custom ytdl command like ytdl1@urgroupname and so on. Default is /ytdl.",
-      "required": false
-    },
-    "PYTDL_COMMAND_G": {
-      "description": "Enter your custom pytdl command like pytdl1@urgroupname and so on. Default is /pytdl.",
-      "required": false
-    },
-    "CANCEL_COMMAND_G": {
-      "description": "Enter your custom cancel command like cancel@urgroupname and so on. Default is /cancel.",
-      "required": false
-    },
-    "GET_SIZE_G": {
-      "description": "Enter your custom getsize command like getsize@urgroupname and so on. Default is /getsize.",
-      "required": false
-    },
+
     "RCLONE_CONFIG": {
-      "description": "Enter your copied text from rclone config. Compulsory for /gleech as well as /tleech command ",
+
+      "description": "path to rclone.conf, if you uploaded rclone.conf, it should be at /app/rclone.conf",
+
+      "value": "/app/rclone.conf",
+
       "required": false
+
     },
-    "DESTINATION_FOLDER": {
-      "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
+
+    "DEF_RCLONE_DRIVE": {
+
+      "description": "Name of the RCLONE drive from the config",
+
       "required": false
+
     },
-    "CUSTOM_FILE_NAME": {
-      "description": "fill with name u want to prefix the file name like ur channel username🙊, keep empty for do nothing, but add to ur config vars even without input.",
+
+    "RCLONE_BASE_DIR": {
+
+      "description": "The base direcory to which the files will be upload if using rclone",
+
+      "value": "/",
+
       "required": false
-    }
+
+    },
+
+    "MAX_YTPLAYLIST_SIZE": {
+
+      "description": " Max size of a playlist that is allowed (Number of videos)",
+
+      "value": "20",
+
+      "required": false
+
+    },
+
+    "MAX_TORRENT_SIZE": {
+
+      "description": "Max size of the torrent allowed",
+
+      "value": "10",
+
+      "required": false
+
+    },
+
+    "BOT_CMD_POSTFIX": {
+
+      "description": "Set this to your bot username if you want to add the username of your bot at the end of the commands like /leech@TorToolkitBot so the value will be @TorToolkitBot",
+
+      "required": false
+
+    },
+
+    "USETTINGS_IN_PRIVATE": {
+
+      "description": "Allow the user settings to be accessed in private",
+
+      "value": "False",
+
+      "required": false
+
+    },
+
+    "LEECH_ENABLED": {
+
+      "description": "Upload to telegram should be enabled or not.",
+
+      "value": "True",
+
+      "required": false
+
+    },
+
+    "OWNER_ID": {
+
+      "description": "Used to restrict use of certain stuff to owner only.",
+
+      "value": "12345678",
+
+      "required": false
+
+    } 
+
   },
-  "stack": "container"
+
+ "stack": "container",
+
+ "addons": [
+
+    {
+
+      "plan": "heroku-postgresql",
+
+      "options": {
+
+        "version": "10"
+
+      }
+
+    }
+
+  ]
+
+}
