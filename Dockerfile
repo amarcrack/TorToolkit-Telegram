@@ -8,17 +8,20 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -qq install -y curl git wget \
     python3 python3-pip \
     aria2 \
-    ffmpeg mediainfo unzip p7zip-full p7zip-rar
-
+    ffmpeg mediainfo  unzip p7zip-full p7zip-rar
+RUN apt-get install -y python3-venv
 RUN curl https://rclone.org/install.sh | bash
 RUN apt-get install -y software-properties-common && apt-get -y update
 RUN add-apt-repository -y ppa:qbittorrent-team/qbittorrent-stable && apt-get install -y qbittorrent-nox
 
-RUN pip3 install --no-cache-dir tortoolkit
+RUN git clone https://github.com/amarcrack/TorToolkit-Telegram.git
+RUN python3 -m venv venv
+RUN source venv/bin/activate
+RUN cd TorToolkit-Telegram && pip install -r requirements.txt
 
 COPY . .
-COPY start.sh /tortoolkit
-COPY alive.sh /tortoolkit
+COPY start.sh /tortoolkit/TorToolkit-Telegram
+COPY alive.sh /tortoolkit/TorToolkit-Telegram
 RUN chmod 777 start.sh
 RUN chmod 777 alive.sh
 
