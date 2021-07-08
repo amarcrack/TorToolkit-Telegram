@@ -14,10 +14,8 @@ RUN curl https://rclone.org/install.sh | bash
 RUN apt-get install -y software-properties-common && apt-get -y update
 RUN add-apt-repository -y ppa:qbittorrent-team/qbittorrent-stable && apt-get install -y qbittorrent-nox
 
-RUN git clone https://github.com/amarcrack/TorToolkit-Telegram.git
+RUN git clone https://github.com/amarcrack/TorToolkit-Telegram.git && cd TorToolkit-Telegram && pip install -r requirements.txt
 RUN python3 -m venv venv
-RUN source venv/bin/activate
-RUN cd TorToolkit-Telegram && pip install -r requirements.txt
 
 COPY . .
 COPY start.sh /tortoolkit/TorToolkit-Telegram
