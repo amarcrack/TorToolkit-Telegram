@@ -23,4 +23,4 @@ RUN chmod 777 alive.sh
 RUN useradd -ms /bin/bash  myuser
 USER myuser
 
-CMD ./start.sh && ./alive.sh
+CMD bash start.sh && bash alive.sh
